@@ -8,12 +8,6 @@ from .Listener import Listener
 home = expanduser("~")
 
 
-def _decorator(f):
-    f()
-    print("DONE \n")
-    return f
-
-
 class TwweetCLI():
 
     def __init__(self):
@@ -54,7 +48,6 @@ class TwweetCLI():
         elif option == '2':
             words = input('Enter the hashtag or word\nyou may enter multiple words/hashtags separated by a "," : ')
             self.listener_obj.stream_word_or_hashtag(words_list=words)
-            # get_tweets_of_hashtag(input('Enter the hashtag : '))
         elif option == '3':
             self.twweeter_obj.get_trending_topics()
         elif option == '4':
@@ -73,19 +66,19 @@ class TwweetCLI():
         self.twweeter_obj = Twweeter()
         self.listener_obj = Listener(self.twweeter_obj)
         self.check_data_dir_exists()
-        print(""" 
+        print("""
 _____________      __  __      ___________________________________
 \__    ___/  \    /  \/  \    /  \_   _____/\_   _____/\__    ___/
-  |    |  \   \/\/   /\   \/\/   /|    __)_  |    __)_   |    |     ______ 
-  |    |   \        /  \        / |        \ |        \  |    |    /_____/ 
-  |____|    \__/\  /    \__/\  / /_______  //_______  /  |____| 
-                 \/          \/          \/         \/ 
-_________ .____    .___ 
-\_   ___ \|    |   |   | 
-/    \  \/|    |   |   | 
-\     \___|    |___|   | 
- \______  /_______ \___| 
-        \/        \/ 
+  |    |  \   \/\/   /\   \/\/   /|    __)_  |    __)_   |    |     ______
+  |    |   \        /  \        / |        \ |        \  |    |    /_____/
+  |____|    \__/\  /    \__/\  / /_______  //_______  /  |____|
+                 \/          \/          \/         \/
+_________ .____    .___
+\_   ___ \|    |   |   |
+/    \  \/|    |   |   |
+\     \___|    |___|   |
+ \______  /_______ \___|
+        \/        \/
         """)
         print('Press 99 to quit the application')
         while True:
@@ -107,7 +100,6 @@ _________ .____    .___
                 self.twweeter_obj.create_creds()
             else:
                 print('Please choose any of the above options \n \n')
-
 
 def cli():
     tww = TwweetCLI()
